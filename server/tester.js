@@ -1,8 +1,10 @@
 const { queryMasterServer, REGIONS } = require('steam-server-query');
 const { queryGameServerPlayer } =  require('steam-server-query');
 const { queryGameServerRules } = require('steam-server-query');
-const axios = require('axios')
+const axios = require('axios');
+const { query } = require('express');
 const API_KEY = '3F091F10D7E92463320FB0FEEBA8B9C2';
+const { GameDig } = require('gamedig');
 
 
 /*queryMasterServer('hl2master.steampowered.com:27011', REGIONS.ALL, { empty: 1, appid: 440, gametype: ['hidden'] }).then(servers => {
@@ -24,10 +26,10 @@ async function getServerList() {
     const response = await axios.get('https://api.steampowered.com/IGameServersService/GetServerList/v1/', {
       params: {
         key: API_KEY,
-        filter: '\\appid\\440\\gametype\\mvm,valve,hidden'
+        filter: '\\appid\\440\\gametype\\mvm,valve,hidden\\empty\\1'
       }
     });
-    if (response.data && response.data.response && response.data.response.servers) {
+    if (response.data) {
       return response.data.response.servers;
     } else {
       console.error('Unexpected response format:', response.data);
@@ -35,6 +37,28 @@ async function getServerList() {
     }
   } catch (error) {
     console.error('Failed to retrieve server list:', error);
+    return null;
+  }
+}
+
+async function queryByFakeIP() {
+  try {
+    const response = await axios.get('https://api.steampowered.com/IGameServersService/QueryByFakeIP/v1/', {
+      params: {
+        key: API_KEY,
+        fake_ip: 2852045815,
+        fake_port: 28176,
+        app_id: 440,
+        query_type: 2
+      }
+    });
+    if (response.data) {
+      return response.data.response.players_data.players
+    } else {
+      console.error('No response')
+    }
+  } catch (error) {
+    console.error('Failed', error);
     return null;
   }
 }
@@ -67,3 +91,8 @@ getServerList().then(servers => {
 }).catch((err) => {
   console.error('Error:', err);
 });
+
+queryByFakeIP().then(players_response => {
+  console.log(players_response)
+})
+
