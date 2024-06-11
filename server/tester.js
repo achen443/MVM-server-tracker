@@ -26,7 +26,8 @@ async function getServerList() {
     const response = await axios.get('https://api.steampowered.com/IGameServersService/GetServerList/v1/', {
       params: {
         key: API_KEY,
-        filter: '\\appid\\440\\gametype\\mvm,valve,hidden\\empty\\1'
+        filter: '\\appid\\440\\gametype\\mvm,valve,hidden\\empty\\1',
+        limit: 500
       }
     });
     if (response.data) {
@@ -40,14 +41,35 @@ async function getServerList() {
     return null;
   }
 }
+function ipToFakeIP(server) {
+  const [ip, port] = server.addr.split(':');
+  let [part1, part2, part3, part4] = ip.split('.').map(Number);
 
-async function queryByFakeIP() {
+  const conversion = num => num.toString(2).padStart(8, '0');
+  part1 = conversion(part1);
+  part2 = conversion(part2);
+  part3 = conversion(part3);
+  part4 = conversion(part4);
+
+  let fullBinary = part1 + part2 + part3 + part4;
+
+  let fakeIP = parseInt(fullBinary, 2);
+
+  return fakeIP;
+}
+
+function getPort(server) {
+  const [ip, port] = server.addr.split(':');
+  return port;
+}
+
+async function queryByFakeIP(server) {
   try {
     const response = await axios.get('https://api.steampowered.com/IGameServersService/QueryByFakeIP/v1/', {
       params: {
         key: API_KEY,
-        fake_ip: 2852045815,
-        fake_port: 28176,
+        fake_ip: ipToFakeIP(server),
+        fake_port: getPort(server),
         app_id: 440,
         query_type: 2
       }
@@ -69,20 +91,22 @@ getServerList().then(servers => {
       console.log(`Server ${index + 1}:`);
       console.log(`  Address: ${server.addr}`);
       console.log(`  Gameport: ${server.gameport}`);
-      console.log(`  SteamID: ${server.steamid}`);
       console.log(`  Name: ${server.name}`);
-      console.log(`  AppID: ${server.appid}`);
-      console.log(`  Game Directory: ${server.gamedir}`);
-      console.log(`  Version: ${server.version}`);
-      console.log(`  Product: ${server.product}`);
       console.log(`  Region: ${server.region}`);
       console.log(`  Players: ${server.players}/${server.max_players}`);
-      console.log(`  Bots: ${server.bots}`);
       console.log(`  Map: ${server.map}`);
-      console.log(`  Secure: ${server.secure}`);
-      console.log(`  Dedicated: ${server.dedicated}`);
-      console.log(`  OS: ${server.os}`);
       console.log(`  Gametype: ${server.gametype}`);
+      console.log('------------------------------------');
+      queryByFakeIP(server).then(players_response => {
+        players_response.forEach((player, idx) => {
+          console.log(`  Player ${idx + 1}:`);
+          console.log(`    Name: ${player.name}`);
+          console.log(`    Score: ${player.score}`);
+          console.log(`    Time Played: ${player.time_played}`);
+        });
+      }).catch(err => {
+        console.error('Players in server error');
+      })
       console.log('------------------------------------');
     });
   } else {
@@ -90,9 +114,5 @@ getServerList().then(servers => {
   }
 }).catch((err) => {
   console.error('Error:', err);
-});
-
-queryByFakeIP().then(players_response => {
-  console.log(players_response)
-})
+}); 
 
