@@ -42,7 +42,7 @@ async function getServerList() {
   }
 }
 function ipToFakeIP(server) {
-  const [ip, port] = server.addr.split(':');
+  const [ip, port] = server.addr.split(':'); 
   let [part1, part2, part3, part4] = ip.split('.').map(Number);
 
   const conversion = num => num.toString(2).padStart(8, '0');
@@ -85,7 +85,7 @@ async function queryByFakeIP(server) {
   }
 }
 
-getServerList().then(servers => {
+/*getServerList().then(servers => {
   if (servers) {
     servers.forEach((server, index) => {
       console.log(`Server ${index + 1}:`);
@@ -115,4 +115,10 @@ getServerList().then(servers => {
 }).catch((err) => {
   console.error('Error:', err);
 }); 
-
+*/
+module.exports = {
+  getServerList,
+  queryByFakeIP,
+  ipToFakeIP,
+  getPort,
+};

@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3001;
 const API_KEY = '3F091F10D7E92463320FB0FEEBA8B9C2'; 
 const { queryMasterServer, REGIONS } = require('steam-server-query');
+const { getServerList, queryByFakeIP, ipToFakeIP, getPort } = require('./tester')
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -11,14 +12,32 @@ app.use(function(req, res, next) {
     next();
   });
   
-app.get('/api/servers', (req, res) => {
-  queryMasterServer('hl2master.steampowered.com:27011', REGIONS.ALL, { empty: 1, appid: 440 })
-    .then(servers => {
+app.get('/api/servers', async (req, res) => {
+  try {
+    const servers = await getServerList();
+    if (servers) {
       res.json(servers);
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    });
+    } else {
+      res.status(500).json({ error: 'No servers returned' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Unexpected Error' });
+  }
+});
+
+app.get('/api/servers/:ip/players', async (req, res) => {
+  const { ip } = req.params;
+  try {
+    const server = { addr: ip };
+    const players = await queryByFakeIP(server);
+    if (players) {
+      res.json(players);
+    } else {
+      res.status(500).json({ error: 'No players found.' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.use(function(req, res) {
