@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { response } from 'express';
 
 function App() {
   const [servers, setServers] = useState([]);
   const [error, setError] = useState(null);
+  const [players, setPlayers] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:3001/api/servers')
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     servers.forEach(server => {
-      axios.get(`http://localhost:3001/api/servers/:ip/players`)
+      axios.get(`http://localhost:3001/api/servers/${server.addr}/players`)
         .then(response => {
           setPlayers(prevPlayers => ({
             ...prevPlayers,
@@ -45,6 +45,20 @@ function App() {
             <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
             <p><strong>Map:</strong> {server.map}</p>
             <p><strong>Gametype:</strong> {server.gametype}</p>
+            {players[server.addr] && (
+              <div>
+                <h4>Players:</h4>
+                <ul>
+                  {players[server.addr].map((player, playerIndex) => (
+                    <li key={playerIndex}>
+                      <p><strong>Name:</strong> {player.name}</p>
+                      <p><strong>Score:</strong> {player.score}</p>
+                      <p><strong>Time:</strong> {player.time_played}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </li>
         ))}
       </ul>
