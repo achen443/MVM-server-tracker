@@ -26,8 +26,8 @@ async function getServerList() {
     const response = await axios.get('https://api.steampowered.com/IGameServersService/GetServerList/v1/', {
       params: {
         key: API_KEY,
+        limit: 500,
         filter: '\\appid\\440\\gametype\\mvm,valve,hidden\\empty\\1',
-        limit: 500
       }
     });
     if (response.data) {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { LocationFinder } from './components/LocationFinder';
+import { mapNames } from '../nameMappings';
 
 function App() {
   const [servers, setServers] = useState([]);
@@ -33,18 +35,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Steam Servers</h1>
+      <h1 style={{textAlign: 'center'}}>Steam Servers</h1>
       {error && <p>Error: {error}</p>}
       <ul>
         {servers.map((server, index) => (
           <li key={index}>
-            <p><strong>Address:</strong> {server.addr}</p>
-            <p><strong>Gameport:</strong> {server.gameport}</p>
             <p><strong>Name:</strong> {server.name}</p>
-            <p><strong>Region:</strong> {server.region}</p>
             <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
-            <p><strong>Map:</strong> {server.map}</p>
-            <p><strong>Gametype:</strong> {server.gametype}</p>
+            <p><strong>Map:</strong> {mapNames(server.map).name}</p>
+            <p><strong>Location</strong> {LocationFinder(server.name)}</p>
             {players[server.addr] && (
               <div>
                 <h4>Players:</h4>
