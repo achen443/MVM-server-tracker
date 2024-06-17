@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { LocationFinder } from './components/LocationFinder';
 import { mapNames } from '../nameMappings';
+import { ServerItem } from './components/ServerItem'
 
 function App() {
   const [servers, setServers] = useState([]);
@@ -39,26 +40,7 @@ function App() {
       {error && <p>Error: {error}</p>}
       <ul>
         {servers.map((server, index) => (
-          <li key={index}>
-            <p><strong>Name:</strong> {server.name}</p>
-            <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
-            <p><strong>Map:</strong> {mapNames(server.map).name}</p>
-            <p><strong>Location</strong> {LocationFinder(server.name)}</p>
-            {players[server.addr] && (
-              <div>
-                <h4>Players:</h4>
-                <ul>
-                  {players[server.addr].map((player, playerIndex) => (
-                    <li key={playerIndex}>
-                      <p><strong>Name:</strong> {player.name}</p>
-                      <p><strong>Score:</strong> {player.score}</p>
-                      <p><strong>Time:</strong> {player.time_played}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </li>
+          <ServerItem key={index} server={server} players={players[server.addr]} />
         ))}
       </ul>
     </div>
