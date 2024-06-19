@@ -8,12 +8,10 @@ export const ServerItem = ({ server, players }) => {
   return (
     <li>
       <p><strong>Address:</strong> {server.addr}</p>
-      <p><strong>Gameport:</strong> {server.gameport}</p>
       <p><strong>Name:</strong> {server.name}</p>
-      <p><strong>Region:</strong> {server.region}</p>
       <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
       <p><strong>Map:</strong> {mapInfo.name} ({mapInfo.group})</p>
-      <p><strong>Location</strong> {LocationFinder(server.name)}</p>
+      <p><strong>Location:</strong> {LocationFinder(server.name)}</p>
       {players && (
               <div>
                 <h4>Players:</h4>

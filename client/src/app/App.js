@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { LocationFinder } from './components/LocationFinder';
-import { mapNames } from '../nameMappings';
-import { ServerItem } from './components/ServerItem'
+import ServerButton from './components/ServerButton'
+import './App.css'
 
 function App() {
   const [servers, setServers] = useState([]);
@@ -36,11 +35,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{textAlign: 'center'}}>Steam Servers</h1>
+      <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
       {error && <p>Error: {error}</p>}
       <ul>
         {servers.map((server, index) => (
-          <ServerItem key={index} server={server} players={players[server.addr]} />
+          <ServerButton key={index} server={server} players={players[server.addr]} />
         ))}
       </ul>
     </div>
