@@ -6,7 +6,7 @@ export const ServerItem = ({ server, players }) => {
   const mapInfo = mapNames(server.map);
 
   return (
-    <li>
+    <div>
       <p><strong>Address:</strong> {server.addr}</p>
       <p><strong>Name:</strong> {server.name}</p>
       <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
@@ -26,6 +26,6 @@ export const ServerItem = ({ server, players }) => {
                 </ul>
               </div>
             )}
-    </li>
+    </div>
   );
 };

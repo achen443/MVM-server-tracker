@@ -41,9 +41,12 @@ function App() {
   return (
     <div className="App">
       <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
-      <button onClick={toggle}>
-        {collapseAll ? 'Expand All' : 'Collapse All'}
-      </button>
+      <div className='container' style={{display: 'flex', justifyContent: 'center'}}>
+        <p>Server Count: {servers.length}</p>
+        <button onClick={toggle}>
+          {collapseAll ? 'Collapse All' : 'Expand All'}
+        </button>
+      </div>
       <div className="container">
         {error && <p>Error: {error}</p>}
         <ul>
