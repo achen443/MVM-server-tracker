@@ -15,13 +15,13 @@ body, html{
   
   .container {
     max-width: 800px; 
-    margin: 0 auto; 
-    padding: 10px;
+    margin: auto; 
+    padding: 0px;
   }
   
   .ServerButton {
     background-color: #333;
-    color: 2c2c2c;
+    color: #2c2c2c;
     padding: 15px;
     border-radius: 5px;
     margin: 10px 0;
@@ -35,10 +35,11 @@ body, html{
   
   .ServerDropdown {
     background-color: #222;
-    color: white;
+    color: #383737;
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
+    cursor: default;
   }
   
   .ServerDropdown ul {
