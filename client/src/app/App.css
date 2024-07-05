@@ -1,4 +1,52 @@
-body {
-    background-color: gray;
-    text-decoration-style: arial;
+body, html{
+    background-color: #444;
 }
+
+.App {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: black;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 10px;
+  }
+  
+  .ServerButton {
+    background-color: #333;
+    color: 2c2c2c;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .ServerButton:hover {
+    background-color: #444;
+  }
+  
+  .ServerDropdown {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .ServerDropdown ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ServerDropdown li {
+    margin: 5px 0;
+  }
+  

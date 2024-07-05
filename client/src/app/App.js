@@ -7,6 +7,11 @@ function App() {
   const [servers, setServers] = useState([]);
   const [error, setError] = useState(null);
   const [players, setPlayers] = useState({});
+  const [collapseAll, setCollapseAll] = useState(false);
+
+  const toggle = () => {
+    setCollapseAll(!collapseAll);
+  }
 
   useEffect(() => {
     axios.get('http://localhost:3001/api/servers')
@@ -36,12 +41,17 @@ function App() {
   return (
     <div className="App">
       <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
-      {error && <p>Error: {error}</p>}
-      <ul>
-        {servers.map((server, index) => (
-          <ServerButton key={index} server={server} players={players[server.addr]} />
-        ))}
+      <button onClick={toggle}>
+        {collapseAll ? 'Expand All' : 'Collapse All'}
+      </button>
+      <div className="container">
+        {error && <p>Error: {error}</p>}
+        <ul>
+         {servers.map((server, index) => (
+           <ServerButton key={index} server={server} players={players[server.addr]} collapseAll={collapseAll} />
+         ))}
       </ul>
+      </div>
     </div>
   );
 }
