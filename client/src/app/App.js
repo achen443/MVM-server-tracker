@@ -49,7 +49,7 @@ function App() {
       </div>
       <div className="container">
         {error && <p>Error: {error}</p>}
-        <ul>
+        <ul style={{padding: 0}}>
          {servers.map((server, index) => (
            <ServerButton key={index} server={server} players={players[server.addr]} collapseAll={collapseAll} />
          ))}

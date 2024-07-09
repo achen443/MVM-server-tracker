@@ -4,7 +4,8 @@ const app = express();
 const PORT = 3001;
 const API_KEY = '3F091F10D7E92463320FB0FEEBA8B9C2'; 
 const { queryMasterServer, REGIONS } = require('steam-server-query');
-const { getServerList, queryByFakeIP, ipToFakeIP, getPort } = require('./tester')
+const { getServerList, queryByFakeIP, ipToFakeIP, getPort } = require('./tester');
+const db = require('./db');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

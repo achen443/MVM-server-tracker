@@ -15,7 +15,7 @@ export const ServerItem = ({ server, players }) => {
       {players && (
               <div>
                 <h4>Players:</h4>
-                <ul>
+                <ul style={{padding: '0', listStyle: 'none'}}>
                   {players.map((player, playerIndex) => (
                     <li key={playerIndex}>
                       <p><strong>Name:</strong> {player.name}</p>
