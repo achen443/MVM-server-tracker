@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ServerButton from './components/ServerButton'
 import './App.css'
+import { mapNames } from '../nameMappings'
 
 function App() {
   const [servers, setServers] = useState([]);
@@ -12,6 +13,8 @@ function App() {
   const toggle = () => {
     setCollapseAll(!collapseAll);
   }
+
+  const validGroups = ['Mecha Engine', 'Two Cities', 'Gear Grinder', 'Steel Trap'];
 
   useEffect(() => {
     axios.get('http://localhost:3001/api/servers')
@@ -25,6 +28,8 @@ function App() {
 
   useEffect(() => {
     servers.forEach(server => {
+      const mapInfo = mapNames(server.map);
+      if (validGroups.includes(mapInfo.group)) {
       axios.get(`http://localhost:3001/api/servers/${server.addr}/players`)
         .then(response => {
           setPlayers(prevPlayers => ({
@@ -35,6 +40,7 @@ function App() {
         .catch(error => {
           console.error("Error getting server players:", error);
         });
+      }
     });
   }, [servers]);
 
