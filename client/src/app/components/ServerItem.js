@@ -13,7 +13,9 @@ export const ServerItem = ({ server, players }) => {
 
   return (
     <div>
-      <p><strong>Address:</strong> {server.addr}</p>
+      <div style={{justifyContent: 'start'}}>
+        <p><strong>Address:</strong> {server.addr}</p>
+      </div>
       <p><strong>Name:</strong> {server.name}</p>
       <p><strong>Players:</strong> {server.players}/{server.max_players}</p>
       <p><strong>Map:</strong> {mapInfo.name} ({mapInfo.group})</p>

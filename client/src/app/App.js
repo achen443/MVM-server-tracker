@@ -40,12 +40,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
-      <div className='container' style={{display: 'flex', justifyContent: 'space-between', margin: 'auto'}}>
-        <p>Server Count: {servers.length}</p>
-        <button onClick={toggle}>
-          {collapseAll ? 'Collapse All' : 'Expand All'}
-        </button>
+      <div style={{backgroundColor: '#33334d', padding: '20px'}}>
+        <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
+        <div className='container' style={{display: 'flex', justifyContent: 'space-between', margin: 'auto'}}>
+          <p>Server Count: {servers.length}</p>
+          <button onClick={toggle}>
+            {collapseAll ? 'Collapse All' : 'Expand All'}
+          </button>
+        </div>
       </div>
       <div className="container">
         {error && <p>Error: {error}</p>}

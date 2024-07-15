@@ -26,6 +26,7 @@ body, html{
     margin: 10px 0;
     cursor: pointer;
     text-align: left;
+    height: 25%;
   }
   
   .ServerButton:hover {
@@ -48,5 +49,11 @@ body, html{
   
   .ServerDropdown li {
     margin: 5px 0;
+  }
+
+  ul {
+    padding-inline-start: 0;
+    list-style-type: none; 
+    margin: 0; 
   }
   
