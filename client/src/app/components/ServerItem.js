@@ -27,7 +27,7 @@ export const ServerItem = ({ server, players }) => {
                   {players.map((player, playerIndex) => (
                     <li key={playerIndex}>
                       <p><strong>Name:</strong> {player.name}</p>
-                      <p><strong>Score:</strong> {player.score}</p>
+                      <p><strong>Kills:</strong> {player.score}</p>
                       <p><strong>Time:</strong> {calculateTime(player.time_played)}</p>
                     </li>
                   ))}
