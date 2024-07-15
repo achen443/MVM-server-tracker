@@ -5,6 +5,12 @@ import { LocationFinder } from './LocationFinder'
 export const ServerItem = ({ server, players }) => {
   const mapInfo = mapNames(server.map);
 
+  function calculateTime(time) {
+    let minutes = Math.floor(time/60);
+    let seconds = time % 60;
+    return minutes + ':' + seconds
+  }
+
   return (
     <div>
       <p><strong>Address:</strong> {server.addr}</p>
@@ -20,7 +26,7 @@ export const ServerItem = ({ server, players }) => {
                     <li key={playerIndex}>
                       <p><strong>Name:</strong> {player.name}</p>
                       <p><strong>Score:</strong> {player.score}</p>
-                      <p><strong>Time:</strong> {player.time_played}</p>
+                      <p><strong>Time:</strong> {calculateTime(player.time_played)}</p>
                     </li>
                   ))}
                 </ul>
