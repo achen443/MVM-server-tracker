@@ -13,24 +13,23 @@ export const ServerItem = ({ server, players }) => {
 
   return (
     <div style={{margin:'10px'}}>
-      <div style={{ justifyContent: 'center', display: 'flex' }}>
-        <p><strong>{server.name}</strong></p>
-        <p><strong>{mapInfo.name}/({mapInfo.group})</strong></p>
+      <div style={{ justifyContent: 'space-between', display: 'flex' }}>
+        <p><strong>{mapInfo.name} ({mapInfo.group})</strong></p>
         <p><strong>Players: {server.players}/{server.max_players}</strong></p>
       </div>
-      <div style={{justifyContent: 'space-between', display: 'flex'}}>
-        <p>{server.addr}</p>
-        <p><strong>Location:</strong> {LocationFinder(server.name)}</p>
+      <div style={{justifyContent: 'space-between', display: 'flex', backgroundColor: '#3e3e3e'}}>
+        <p style={{color: 'white'}}>{server.addr}</p>
+        <p style={{color: 'white'}}><strong>Location:</strong> {LocationFinder(server.name)}</p>
       </div>
       {players && (
-        <div style={{ justifyContent: 'start', display: 'flex', padding: '20px' }}>
+        <div style={{ justifyContent: 'start', display: 'flex'}}>
           <ul style={{ padding: '0', listStyle: 'none', width: '100%' }}>
             {players.map((player, playerIndex) => (
-              <li key={playerIndex} style={{ marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                  <p style={{ flex: 1, textAlign: 'left' }}><strong>Name:</strong> {player.name}</p>
-                  <p style={{ flex: 1, textAlign: 'right' }}><strong>Kills:</strong> {player.score}</p>
-                  <p style={{ flex: 1, textAlign: 'right' }}><strong>Time:</strong> {calculateTime(player.time_played)}</p>
+              <li key={playerIndex}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', backgroundColor: '#3e3e3e'}}>
+                  <p style={{ flex: 1, textAlign: 'left', color: 'white' }}><strong>Name:</strong> {player.name}</p>
+                  <p style={{ flex: 1, textAlign: 'right', color: 'white' }}><strong>Kills:</strong> {player.score}</p>
+                  <p style={{ flex: 1, textAlign: 'right', color: 'white' }}><strong>Time:</strong> {calculateTime(player.time_played)}</p>
                 </div>
               </li>
             ))}
