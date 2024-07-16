@@ -16,6 +16,11 @@ function App() {
 
   const validGroups = ['Mecha Engine', 'Two Cities', 'Gear Grinder', 'Steel Trap'];
 
+  const filteredServers = servers.filter(server => {
+    const mapInfo = mapNames(server.map);
+    return validGroups.includes(mapInfo.group);
+  });
+
   useEffect(() => {
     axios.get('http://localhost:3001/api/servers')
       .then(response => {
@@ -27,9 +32,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    servers.forEach(server => {
-      const mapInfo = mapNames(server.map);
-      if (validGroups.includes(mapInfo.group)) {
+    filteredServers.forEach(server => {
       axios.get(`http://localhost:3001/api/servers/${server.addr}/players`)
         .then(response => {
           setPlayers(prevPlayers => ({
@@ -41,7 +44,7 @@ function App() {
           console.error("Error getting server players:", error);
         });
       }
-    });
+    );
   }, [servers]);
 
   return (
@@ -49,7 +52,7 @@ function App() {
       <div style={{backgroundColor: '#33334d', padding: '20px'}}>
         <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
         <div className='container' style={{display: 'flex', justifyContent: 'space-between', margin: 'auto'}}>
-          <p>Server Count: {servers.length}</p>
+          <p>Server Count: {filteredServers.length}</p>
           <button onClick={toggle}>
             {collapseAll ? 'Collapse All' : 'Expand All'}
           </button>
@@ -58,7 +61,7 @@ function App() {
       <div className="container">
         {error && <p>Error: {error}</p>}
         <ul style={{padding: 0}}>
-         {servers.map((server, index) => (
+         {filteredServers.map((server, index) => (
            <ServerButton key={index} server={server} players={players[server.addr]} collapseAll={collapseAll} />
          ))}
       </ul>
