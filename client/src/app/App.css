@@ -14,7 +14,7 @@ body, html{
   }
   
   .container {
-    max-width: 800px; 
+    max-width: 600px; 
     margin: auto; 
   }
   
@@ -36,9 +36,7 @@ body, html{
   .ServerDropdown {
     background-color: #222;
     color: #383737;
-    padding: 10px;
     border-radius: 5px;
-    margin-top: 10px;
     cursor: default;
   }
   

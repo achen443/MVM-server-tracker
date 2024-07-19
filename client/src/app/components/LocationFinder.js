@@ -6,7 +6,7 @@ export function LocationFinder(serverName) {
     const [valve, matchmaking, serverPart, location, crap, number] = serverName.split(' ');
     
     if (!location || !number) {
-      return serverName;
+      return serverName; 
     }
   
     let slicedLocation = location.slice(1);
