@@ -1,3 +1,5 @@
+import flagMappings from './FlagMappings'
+
 export function LocationFinder(serverName) {
     if (!serverName) {
       return '';
@@ -11,6 +13,7 @@ export function LocationFinder(serverName) {
   
     let slicedLocation = location.slice(1);
     let slicedNumber = number.slice(0, -1);
-    return slicedLocation + ' ' + slicedNumber;
+    let flag = flagMappings[slicedLocation]
+    return slicedLocation + ' ' + slicedNumber + <img src={flag}/>;
   }
   

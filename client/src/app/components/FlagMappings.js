@@ -1,13 +1,13 @@
-import Australia from './components/images/flags/Australia.png'
-import Chile from './components/images/flags/Chile.png'
-import Germany from './components/images/flags/Germany.png'
-import HongKong from './components/images/flags/HongKong.png'
-import Japan from './components/images/flags/Japan.png'
-import Peru from './components/images/flags/Peru.png'
-import Singapore from './components/images/flags/Singapore.png'
-import Spain from './components/images/flags/Spain.png'
-import Sweden from './components/images/flags/Sweden.png'
-import US from './components/images/flags/US.png'
+import Australia from './images/flags/Australia.png'
+import Chile from './images/flags/Chile.png'
+import Germany from './images/flags/Germany.png'
+import HongKong from './images/flags/HongKong.png'
+import Japan from './images/flags/Japan.png'
+import Peru from './images/flags/Peru.png'
+import Singapore from './images/flags/Singapore.png'
+import Spain from './images/flags/Spain.png'
+import Sweden from './images/flags/Sweden.png'
+import US from './images/flags/US.png'
 
 const flagMappings = {
     'Virginia':US,
@@ -23,3 +23,5 @@ const flagMappings = {
     'Peru':Peru,
     'Madrid':Spain
 }
+
+export default flagMappings;
