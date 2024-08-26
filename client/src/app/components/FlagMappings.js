@@ -10,18 +10,18 @@ import Sweden from './images/flags/Sweden.png'
 import US from './images/flags/US.png'
 
 const flagMappings = {
-    'Virginia':US,
-    'Los Angeles':US,
-    'Washington':US,
-    'Stockholm':Sweden,
-    'Frankfurt':Germany,
-    'Australia':Australia,
-    'Chile':Chile,
-    'Hong Kong':HongKong,
-    'Tokyo':Japan,
-    'Singapore':Singapore,
-    'Peru':Peru,
-    'Madrid':Spain
+    Virginia:US,
+    LA:US,
+    Washington:US,
+    Stockholm:Sweden,
+    Frankfurt:Germany,
+    Australia:Australia,
+    Chile:Chile,
+    Hong:HongKong,
+    Tokyo:Japan,
+    Singapore:Singapore,
+    Peru:Peru,
+    Madrid:Spain
 }
 
 export default flagMappings;

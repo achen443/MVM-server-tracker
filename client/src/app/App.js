@@ -3,6 +3,7 @@ import axios from 'axios';
 import ServerButton from './components/ServerButton'
 import './App.css'
 import { mapNames } from '../nameMappings'
+import Header from './components/header.js'
 
 function App() {
   const [servers, setServers] = useState([]);
@@ -49,11 +50,11 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{backgroundColor: '#33334d', padding: '20px'}}>
+      <div style={{backgroundColor: '#666666', padding: '20px', maxWidth: '800px', margin:'auto', border: '3px solid black'}}>
         <h1 style={{textAlign: 'center'}}>Official MvM servers</h1>
-        <div className='container' style={{display: 'flex', justifyContent: 'space-between', margin: 'auto'}}>
+        <div className='container' style={{display: 'flex', justifyContent: 'space-between', margin: 'auto', fontFamily:'tf'}}>
           <p>Server Count: {filteredServers.length}</p>
-          <button onClick={toggle}>
+          <button onClick={toggle} style={{border: '2px solid black', fontFamily: 'tf'}}>
             {collapseAll ? 'Collapse All' : 'Expand All'}
           </button>
         </div>

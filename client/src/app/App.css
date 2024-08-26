@@ -2,6 +2,18 @@ body, html{
     background-color: #444;
 }
 
+@font-face {
+  font-family: 'tf';
+  src: url('../fonts/TF2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'tfbuild';
+  src: url('../fonts/tf2build.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .App {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -10,11 +22,13 @@ body, html{
   
   h1 {
     text-align: center;
+    font-family: tf;
     margin-bottom: 20px;
   }
   
   .container {
     max-width: 600px; 
+    font-family: tfbuild;
     margin: auto; 
   }
   
@@ -54,4 +68,5 @@ body, html{
     list-style-type: none; 
     margin: 0; 
   }
+  
   

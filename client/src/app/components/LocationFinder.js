@@ -13,7 +13,7 @@ export function LocationFinder(serverName) {
   
     let slicedLocation = location.slice(1);
     let slicedNumber = number.slice(0, -1);
-    let flag = flagMappings[slicedLocation]
-    return slicedLocation + ' ' + slicedNumber + <img src={flag}/>;
+    let flag = <image src={flagMappings[slicedLocation]}/>
+    return slicedLocation + ' ' + slicedNumber + ' ' + flag;
   }
   
