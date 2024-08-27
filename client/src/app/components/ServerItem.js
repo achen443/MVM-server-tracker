@@ -17,9 +17,9 @@ export const ServerItem = ({ server, players }) => {
         <p><strong>{mapInfo.name} ({mapInfo.group})</strong></p>
         <p><strong>Players: {server.players}/{server.max_players}</strong></p>
       </div>
-      <div style={{justifyContent: 'space-between', display: 'flex', backgroundColor: '#3e3e3e'}}>
+      <div style={{justifyContent: 'space-between', display: 'flex', backgroundColor: '#3e3e3e', whiteSpace: 'nowrap'}}>
         <p style={{color: 'white', margin: '10px'}}>{server.addr}</p>
-        <p style={{color: 'white', margin: '10px'}}><strong>Location:</strong> {LocationFinder(server.name)}</p>
+        <p style={{color: 'white', margin: '10px', whiteSpace: 'nowrap'}}><strong>Location:</strong> {LocationFinder(server.name)}</p>
       </div>
       {players && (
         <div style={{ justifyContent: 'start', display: 'flex'}}>
