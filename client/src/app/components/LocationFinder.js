@@ -17,8 +17,6 @@ export function LocationFinder(serverName) {
   let flagSrc = flagMappings[slicedLocation];
 
   return (
-    <div>
-      {slicedLocation} {slicedNumber} <img src={flagSrc} alt={`${slicedLocation} flag`} style={{ height: '1em'}}/>
-    </div>
+      <div>{slicedLocation} {slicedNumber} <img src={flagSrc} alt={`${slicedLocation} flag`} style={{ height: '1em'}}/></div>
   );
 }

@@ -1,7 +1,7 @@
 const mapNameMappings = {
     'mvm_bigrock_advanced1': { name: 'Broken Parts', group: 'Mecha Engine' },
     'mvm_bigrock_advanced2': { name: 'Bone Shaker', group: 'Mecha Engine' },
-    'mvm_decoy_advaned3': { name: 'Disintegration', group: 'Mecha Engine' },
+    'mvm_decoy_advanced3': { name: 'Disintegration', group: 'Mecha Engine' },
     'mvm_rottenburg_advanced1': { name: 'Hamlet Hostility', group: 'Two Cities' },
     'mvm_rottenburg_advanced2': { name: 'Bavarian Botbash', group: 'Two Cities' },
     'mvm_mannhattan_advanced1': { name: 'Empire Escalation', group: 'Two Cities' },

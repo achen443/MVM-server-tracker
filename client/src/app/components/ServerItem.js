@@ -17,9 +17,9 @@ export const ServerItem = ({ server, players }) => {
         <p><strong>{mapInfo.name} ({mapInfo.group})</strong></p>
         <p><strong>Players: {server.players}/{server.max_players}</strong></p>
       </div>
-      <div style={{justifyContent: 'space-between', display: 'flex', backgroundColor: '#3e3e3e', whiteSpace: 'nowrap'}}>
-        <p style={{color: 'white', margin: '10px'}}>{server.addr}</p>
-        <p style={{color: 'white', margin: '10px', whiteSpace: 'nowrap'}}><strong>Location:</strong> {LocationFinder(server.name)}</p>
+      <div style={{justifyContent: 'space-between', display: 'flex', backgroundColor: '#3e3e3e', whiteSpace: 'nowrap', alignContent: 'center'}}>
+        <p style={{color: 'black', margin: '10px'}}> {LocationFinder(server.name)}</p>
+        <p style={{color: 'white', margin: '10px'}}><div>{server.addr}</div></p>
       </div>
       {players && (
         <div style={{ justifyContent: 'start', display: 'flex'}}>
@@ -27,9 +27,9 @@ export const ServerItem = ({ server, players }) => {
             {players.map((player, playerIndex) => (
               <li key={playerIndex}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#4f4d4d', border: '10px'}}>
-                  <p style={{ flex: 1, textAlign: 'left', color: 'white', fontSize: '13px', margin: '10px' }}><strong>Name:</strong> {player.name}</p>
-                  <p style={{ flex: 1, textAlign: 'right', color: 'white', fontSize: '13px' }}><strong>Kills:</strong> {player.score}</p>
-                  <p style={{ flex: 1, textAlign: 'right', color: 'white', fontSize: '13px', margin: '10px' }}><strong>Time:</strong> {calculateTime(player.time_played)}</p>
+                  <p style={{ flex: 1, textAlign: 'left', color: 'black', fontSize: '13px', margin: '10px' }}><strong>Name:</strong> {player.name}</p>
+                  <p style={{ flex: 1, textAlign: 'right', color: 'black', fontSize: '13px' }}><strong>Kills:</strong> {player.score}</p>
+                  <p style={{ flex: 1, textAlign: 'right', color: 'black', fontSize: '13px', margin: '10px' }}><strong>Time:</strong> {calculateTime(player.time_played)}</p>
                 </div>
               </li>
             ))}

@@ -8,6 +8,7 @@ import Singapore from './images/flags/Singapore.png'
 import Spain from './images/flags/Spain.png'
 import Sweden from './images/flags/Sweden.png'
 import US from './images/flags/US.png'
+import Brazil from './images/flags/Brazil.png'
 
 const flagMappings = {
     Virginia:US,
@@ -21,7 +22,8 @@ const flagMappings = {
     Tokyo:Japan,
     Singapore:Singapore,
     Peru:Peru,
-    Madrid:Spain
+    Madrid:Spain,
+    Brazil:Brazil
 }
 
 export default flagMappings;
