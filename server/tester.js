@@ -3,7 +3,7 @@ const { queryGameServerPlayer } =  require('steam-server-query');
 const { queryGameServerRules } = require('steam-server-query');
 const axios = require('axios');
 const { query } = require('express');
-const API_KEY = '3F091F10D7E92463320FB0FEEBA8B9C2';
+const API_KEY = x; // todo replace with .env API_KEY
 const { GameDig } = require('gamedig');
 
 
